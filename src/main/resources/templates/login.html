@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Login Page</title>
+        <!-- Link to CSS file -->
+        <link rel="stylesheet" th:href="@{/login-style.css}">
+    </head>
+    <body>
+        
+       
+        <div class="login-container">
+            <h2>Login</h2>
+
+            <!-- Error message box, shown only if the "error" attribute exists -->
+            <div th:if="${error}" class="error-message">
+                <p th:text="${error}"></p>
+            </div>
+            <!-- Form for login -->
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+        
+    </body>
+</html>

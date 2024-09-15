@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"></html>
+    <head>
+        <title>Delete Info</title>
+        <link rel="stylesheet" th:href="@{style.css}" />
+    </head>
+    <body>
+        <div class="container">
+            <!-- Header with navigation buttons -->
+            <div class="header">
+                <button class="nav-btn" onclick="window.location.href='http://localhost:8080/home'">Home</button>
+                <button class="nav-btn" onclick="window.location.href='http://localhost:8080/login'">Log Out</button>
+            </div>
+    
+            <!-- Main content area with buttons in a column and table next to them in the same row -->
+            <div class="content-row">
+                
+                <div class="button-column">
+                    <div class="sidebar">
+                        <form th:action="@{/delete-employee-info}" method="post">
+                            <label for="employeeId"></label>
+                            <br>
+                            <input type="text" id="employeeId" name="employeeId" placeholder="Enter Employee ID" required>
+                            <br>
+                            <button type="submit" id="submit-btn">Delete Employee</button>
+                        </form>
+                        
+                    </div>
+                    <div style="text-align: center;" id="delete-message" th:if="${message != null}">
+                        <p th:text="${message}"></p>
+                    </div>
+                </div>
+    
+                <!-- Table displaying employee information -->
+                <div class="table-wrapper">
+                    
+                    <table>
+                        <caption style="font-size: 25px;">Employee Information</caption>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Sample data for demonstration -->
+                            <tr th:each="employee : ${employees}">
+                                <td th:text="${employee.id}"></td>
+                                <td th:text="${employee.name}"></td>
+                                <td th:text="${employee.email}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

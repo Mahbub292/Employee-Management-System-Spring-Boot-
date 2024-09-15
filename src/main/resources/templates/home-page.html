@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" th:href="@{home-style.css}" />
+    </head>
+    <body>
+        <div class="container">
+            <!-- Header with navigation buttons -->
+            <div class="header">
+                
+                <button class="nav-btn" onclick="window.location.href='http://localhost:8080/home'">Home</button>
+                <button class="nav-btn" onclick="window.location.href='http://localhost:8080/login'">Log Out</button>
+                
+                
+            </div>
+    
+            <!-- Main content area with buttons in a column and table next to them in the same row -->
+            <div class="content-row">
+                <!-- Buttons (Add, Edit, Delete) in a column -->
+                <div class="button-column">
+                    <button class="action-btn" onclick="window.location.href='http://localhost:8080/add-employee'">Add New Employee</button>
+                    <button class="action-btn" onclick="window.location.href='http://localhost:8080/edit-info'">Edit Employee Info</button>
+                    <button class="action-btn" onclick="window.location.href='http://localhost:8080/delete-employee'">Delete Employee</button>
+                </div>
+    
+                <!-- Table displaying employee information -->
+                <div class="table-wrapper">
+                    <h2 style="text-align: center;">Employee Information</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="employee : ${employees}">
+                                <td th:text="${employee.id}"></td>
+                                <td th:text="${employee.name}"></td>
+                                <td th:text="${employee.email}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

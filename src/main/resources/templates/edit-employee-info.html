@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml"></html>
+    <head>
+        <title>Edit </title>
+        <link rel="stylesheet" th:href="@{style.css}" />
+    </head>
+    <body>
+        <div class="container">
+            <!-- Header with navigation buttons -->
+            <div class="header">
+                <button class="nav-btn" onclick="window.location.href='http://localhost:8080/home'">Home</button>
+                <button class="nav-btn" onclick="window.location.href='http://localhost:8080/login'">Log Out</button>
+            </div>
+    
+            <!-- Main content area with buttons in a column and table next to them in the same row -->
+            <div class="content-row">
+                <!-- Buttons (Add, Edit, Delete) in a column -->
+                <div class="button-column">
+                    
+                    <div class="sidebar">
+                        
+                        
+                        <form th:action="@{/edit-employee-info}" method="post">
+
+
+                            <label for="employeeId"></label>
+                            <br>
+                            <input type="text" id="employeeId" name="employeeId" placeholder="Enter Employee Id" required>
+                            <br>
+                            <label for="employeeName"></label>
+                            <br>
+                            <input type="text" id="employeeName" name="employeeName" value="" placeholder="Enter Employee Name">
+                            <br>
+                            <label for="employeeEmail"></label>
+                            <br>
+                            <input type="text" id="employeeEmail" name="employeeEmail" value="" placeholder="Enter Employee Email">
+                            <br>
+                            <button type="submit" id="submit-btn">Edit Employee Info</button>
+                        </form>                     
+                    </div>
+                    <div id="message-div" th:if="${message != null}">
+                        <p th:text="${message}"></p>
+                    </div>
+                </div>
+    
+                <!-- Table displaying employee information -->
+                <div class="table-wrapper">
+                    
+                    <table>
+                        <caption style="font-size: 25px;">Employee Information</caption>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Sample data for demonstration -->
+                            <tr th:each="employee : ${employees}">
+                                <td th:text="${employee.id}"></td>
+                                <td th:text="${employee.name}"></td>
+                                <td th:text="${employee.email}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
